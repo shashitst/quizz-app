@@ -1,0 +1,85 @@
+export const data = [
+    {
+    question:" Which device is required for the internet connection? ",
+    option1: "Moden",
+    option2: "Router",
+    option3: "LAN cable",
+    option4: "Pen Drive",
+    ans: 1, 
+    },
+    {
+    question: "who is prime minister of india?",
+    option1: "Narendra Modi",
+    option2: "Rahul Gandhi",
+    option3: "Bhupesh Baghel",
+    option4: "Amit Shah",
+    ans: 1,
+    },
+    {
+        question:"which state has highest GDP?",
+        option1: "Haryana",
+        option2: "Chhattisgarh",
+        option3:"Maharashtra",
+        option4:"Tamil Nadu",
+        ans: 3,
+    },
+    {
+        question:"who is the president of india?",
+        option1:"Kamlanath",
+        option2:"Draupadi Murmu",
+        option3:"Shekhar",
+        option4:"Atul lkar",
+        ans:2,
+    },
+    {
+        question:"Who hoists the national flag at the Red Fort on Independence Day ?",
+        option1:"Governor",
+        option2:"Chief Justice ",
+        option3:"Prime Minister ",
+        option4:"President",
+        ans: 3,
+    },
+    {
+        question:"Who is the head of the State and is the highest formal authority in India ?",
+        option1:"Prime Minister",
+        option2:"President",
+        option3:"Parliament",
+        option4:"Vice-President",
+        ans: 2,
+    },
+    {
+        question:"Who is the Supreme Commander of the defence forces of India?",
+        option1:"President",
+        option2:"Chief of Defence",
+        option3:"Prime Minister ",
+        option4:"Railway Minister",
+        ans: 1,
+    },
+    {
+        question:"Who became the acting prime minister of India after the death of Jawaharlal Nehru in 1964 ?",
+        option1:"V P Singh",
+        option2:"Morarji Desai",
+        option3:"Gulzarilal Nanda",
+        option4:"Charan Singh",
+        ans: 3,
+
+    },
+    {
+        question:"Who among the following is the longest serving President of India ?",
+        option1:"Neelam Sanjiva Reddy ",
+        option2: "Shankar Dayal Sharma ",
+        option3:"Rajendra Prasad ",
+        option4:"R Venkataraman ",
+        ans: 3,
+    },
+    {
+        question:"Who appoints Governor of the state in India ?",
+        option1:"PMO",
+        option2:"Prime Minister ",
+        option3:"President",
+        option4:"Cabinet Committee on Appointments",
+        ans: 3,
+    }
+
+
+]
