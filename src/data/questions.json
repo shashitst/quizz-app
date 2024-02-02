@@ -1,0 +1,123 @@
+{
+    "response_code": 0,
+    "results": [
+        {
+            "type": "multiple",
+            "difficulty": "easy",
+            "category": "Entertainment: Board Games",
+            "question": "On a standard Monopoly board, which square is diagonally opposite &#039;Go&#039;? ",
+            "correct_answer": "Free Parking",
+            "incorrect_answers": [
+                "Go to Jail",
+                "Jail",
+                "The Electric Company"
+            ]
+        },
+        {
+            "type": "multiple",
+            "difficulty": "hard",
+            "category": "Entertainment: Video Games",
+            "question": "In the Nintendo Game Splatoon 2, what is Marina&#039;s screen name?",
+            "correct_answer": "DJ_Hyperfresh",
+            "incorrect_answers": [
+                "MC.princess",
+                "Kidnotsquid123",
+                "I&lt;30ffTh3H00k"
+            ]
+        },
+        {
+            "type": "multiple",
+            "difficulty": "easy",
+            "category": "Entertainment: Music",
+            "question": "Which of the following is an album by punk rock band Anti-Flag?",
+            "correct_answer": "For Blood And Empire",
+            "incorrect_answers": [
+                "Infinity On High",
+                "21st Century Breakdown",
+                "No Pads, No Helmets...Just Balls"
+            ]
+        },
+        {
+            "type": "boolean",
+            "difficulty": "hard",
+            "category": "History",
+            "question": "The man that shot Alexander Hamilton was named Aaron Burr.",
+            "correct_answer": "True",
+            "incorrect_answers": [
+                "False"
+            ]
+        },
+        {
+            "type": "multiple",
+            "difficulty": "medium",
+            "category": "Celebrities",
+            "question": "In what year did &quot;Bob Ross&quot; die?",
+            "correct_answer": "1995",
+            "incorrect_answers": [
+                "1986",
+                "1989",
+                "1997"
+            ]
+        },
+        {
+            "type": "multiple",
+            "difficulty": "hard",
+            "category": "Entertainment: Television",
+            "question": "Prior to working at Wizards of the Coast, &quot;Mark Rosewater&quot; was a writer for which show?",
+            "correct_answer": "Roseanne",
+            "incorrect_answers": [
+                "Boy Meets World",
+                "The X-Files",
+                "NYPD Blue"
+            ]
+        },
+        {
+            "type": "multiple",
+            "difficulty": "medium",
+            "category": "Entertainment: Books",
+            "question": "What is the fourth book of the Old Testament?",
+            "correct_answer": "Numbers",
+            "incorrect_answers": [
+                "Genesis",
+                "Exodus",
+                "Leviticus"
+            ]
+        },
+        {
+            "type": "multiple",
+            "difficulty": "easy",
+            "category": "General Knowledge",
+            "question": "What alcoholic drink is made from molasses?",
+            "correct_answer": "Rum",
+            "incorrect_answers": [
+                "Gin",
+                "Vodka",
+                "Whisky"
+            ]
+        },
+        {
+            "type": "multiple",
+            "difficulty": "easy",
+            "category": "Geography",
+            "question": "Which small country is located between the borders of France and Spain?",
+            "correct_answer": "Andorra",
+            "incorrect_answers": [
+                "San Marino",
+                "Vatican City",
+                "Lichtenstein"
+            ]
+        },
+        {
+            "type": "multiple",
+            "difficulty": "easy",
+            "category": "Entertainment: Music",
+            "question": "Which of the following is not a studio album by the band Pink Floyd?",
+            "correct_answer": "Moving Pictures",
+            "incorrect_answers": [
+                "The Dark Side of the Moon",
+                "Wish You Were Here",
+                "Animals"
+            ]
+        }
+    ]
+}
