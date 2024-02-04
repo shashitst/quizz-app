@@ -3,45 +3,37 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import Quiz from '../quiz/Quiz';
+import { TextField, Button } from '@mui/material';
+
 const Loginpage = () => {
 
 
   const navigation = useNavigate();
-  const [userName, setUserName] = useState('');
-    
-  const handleContinue = () => {
-  
-    console.log('User Name:', userName);
-    navigation('/Quiz')
+  const [userName, setUserName] = useState();
 
-    
-
-    
-
+  const handleContinue = (event) => {
+    console.log('User Name:', event.tar);
+    navigation('/select-category')
   };
 
   return (
-    <div style={{ border: '1px solid#325199',textAlign: 'center', padding: '20px',borderRadius: '8px', position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)'}}>
+    <div className='body-element'>
       <img
         src="https://cdn-icons-png.flaticon.com/512/12930/12930579.png"
         alt="Company Logo"
         style={{ width: '200px', height: 'auto', marginBottom: '20px' }}
       />
-      <h2>Enter Your Name</h2>
+
       <div style={{ marginBottom: '20px' }}>
-        <label>
-          Name:
-          <input
-            type="text"
-            value={userName}
-            onChange={(e) => setUserName(e.target.value)}
-          />
-        </label>
+        <TextField fullWidth id="outlined-basic" label="Enter your name" variant="outlined"
+          onChange={(event) => {
+            setUserName(event.target.value);
+          }}
+        />
       </div>
-      <button onClick={handleContinue} disabled={!userName}>
-        Continue
-      </button>
-    </div>
+      <Button fullWidth disabled={!userName} onClick={handleContinue} variant="outlined">Continue</Button>
+
+     </div>
   );
 };
 export default Loginpage;
