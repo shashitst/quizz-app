@@ -1,4 +1,4 @@
-import React, {useState, useContext, createContext} from 'react';
+import React, { useState, useContext, createContext, useEffect } from 'react';
 
 export const AppContext = createContext();
 
@@ -6,16 +6,33 @@ export const AppProvider = ({ children }) => {
   const [index, setIndex] = useState(0);
   const [questions, setQuestions] = useState([]);
   const [answers, setAnswers] = useState([]);
+  const [username, setUserName] = useState([]);
+
+
+  const [category, selectedCategory] = useState();
+  const [difficultyLevel, setDifficultyLevel] = useState();
+
+
+  const [results, setResults] = useState([]);
+
 
   const saveQuestions = (ques) => setQuestions(ques);
   const saveAnswers = (ans) => setAnswers(ans);
   const saveIndex = (ind) => setIndex(ind);
 
+
+
+
+  useEffect(() => {
+    console.log("appcontext update");
+  }, [index, questions, answers, username,results])
+
+
+
   return (
-    <AppContext.Provider value={{ saveQuestions, saveAnswers, saveIndex, index, questions,answers }}>
+    <AppContext.Provider  value={{ username, setUserName, saveQuestions, saveAnswers, saveIndex, index, questions, category, selectedCategory, difficultyLevel, setDifficultyLevel, results, setResults}}>
       {children}
     </AppContext.Provider>
   );
 };
 
- 

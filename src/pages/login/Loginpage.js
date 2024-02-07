@@ -1,39 +1,86 @@
 
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-
+import { AppContext } from "../../context/AppContext";
 import Quiz from '../quiz/Quiz';
-import { TextField, Button } from '@mui/material';
+import { TextField, Button, Alert } from '@mui/material';
+import { Snackbar } from '@mui/base';
 
 const Loginpage = () => {
 
 
   const navigation = useNavigate();
-  const [userName, setUserName] = useState();
 
-  const handleContinue = (event) => {
-    console.log('User Name:', event.tar);
+  const [state, setState] = useState({
+    open: false,
+    vertical: 'top',
+    horizontal: 'center',
+  });
+
+  const context = useContext(AppContext);
+
+  //object destructing 
+
+  // context.username 
+  const { username, setUserName } = context;
+
+  const handleClose = () => {
+    setState({ ...state, open: false });
+  };
+
+
+  const handleContinue = () => {
+
     navigation('/select-category')
   };
 
   return (
-    <div className='body-element'>
+    <div style={{ border: '1px solid#325199', backgroundColor: "#FFFFFF", textAlign: 'center', padding: '20px', borderRadius: '8px', position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}
+      className='body-element'>
       <img
-        src="https://cdn-icons-png.flaticon.com/512/12930/12930579.png"
+        src="https://i.imgur.com/4FNV3mP.png
+        "
         alt="Company Logo"
         style={{ width: '200px', height: 'auto', marginBottom: '20px' }}
       />
 
       <div style={{ marginBottom: '20px' }}>
+        <Snackbar
+          anchorOrigin={{ vertical: state.vertical, horizontal: state.horizontal }}
+          open={state.open}
+          autoHideDuration={1000}
+          onClose={handleClose}
+          message="Plesae Enter Username"
+          key={Date.now()}
+        >
+          <Alert onClose={handleClose} severity="error">
+            Please Enter Username
+          </Alert>
+
+        </Snackbar>
         <TextField fullWidth id="outlined-basic" label="Enter your name" variant="outlined"
+
+          onKeyDown={(event) => {
+            if (event.keyCode == 13) {
+              if (username != undefined && username != "") {
+                handleContinue()
+              } else {
+                setState({ ...state, open: true });
+              }
+
+            }
+          }}
+
           onChange={(event) => {
             setUserName(event.target.value);
           }}
         />
       </div>
-      <Button fullWidth disabled={!userName} onClick={handleContinue} variant="outlined">Continue</Button>
 
-     </div>
+      <Button fullWidth disabled={!username} onClick={handleContinue} variant="outlined">Continue</Button>
+
+
+    </div>
   );
 };
 export default Loginpage;

@@ -47,11 +47,6 @@
     margin: auto;
     font-size: 17px;
 }
-.container .correct{
-    background:rgb(177, 241, 193);
-    border-color: greenyellow;
-}
-.container .wrong{
-    background: rgb(238, 133, 133);
-    border-color: red;
-}
+
+
+
