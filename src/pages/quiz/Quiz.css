@@ -48,5 +48,23 @@
     font-size: 17px;
 }
 
+.quiz-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
 
+.header h3{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
 
+.header h3 {
+    margin: 0;
+}
+.header h4 {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}

@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import { AppContext } from "../../context/AppContext";
 import './Quiz.css'
-import { FormLabel, Grid, Button, LinearProgress } from "@mui/material";
+import { FormLabel, Grid, Button, LinearProgress, Paper, Stepper, Step, StepLabel } from "@mui/material";
 import { useLocation, useNavigate } from "react-router-dom";
 import { getQuestions } from "../../api/API";
 import { categories, leve, level } from "../../utils/utils";
@@ -18,6 +18,12 @@ const Quiz = () => {
         questions,setQuestions, saveIndex, saveQuestions,
         username, setUserName, category, difficultyLevel, results
     } = context;
+
+
+    const [activeStep, setActiveStep] = useState(0);
+    const steps = Array.from({ length: 10 }, (_, i) => `Question ${i + 1}`);
+
+
 
     const indexQuestion = questions[index];
 
@@ -53,9 +59,26 @@ const Quiz = () => {
     const levels = leve.find(x => x.level == difficultyLevel);
 
 
+    const handleAnswerSelect = (selectedAns) => {
+        questions[index].selectedAns = selectedAns;
+        const nextIndex = index + 1;
+        saveQuestions(questions);
+        if (nextIndex < 10) {
+            saveIndex(nextIndex);
+            setActiveStep(nextIndex);
+        } else {
+            handleSubmit();
+        }
+    };
+
+
+
+
     const handleSubmit = () => {
         let correctAnswers = 0;
         let incorrectAnswers = 0;
+        setActiveStep((prevActiveStep) => prevActiveStep + 1);
+        setActiveStep((prevActiveStep) => prevActiveStep - 1);
 
         
         questions.forEach(question => {
@@ -75,18 +98,26 @@ const Quiz = () => {
 
 
 
-
   
 
     return (
         <>
-
+        <div className="quiz-container">
+            <>
             <h2>Hello {username}, </h2>
+            
+            <div className="header">
             <h3>category :  {categoryname.name}</h3>
             <h4>difficultylevel : {levels.level}</h4>
+            </div>
 
             <Grid container spacing={2} sx={{ textAlign: "center" }}>
                 <Grid item sx={{ textAlign: "center" }} >
+                    
+                <Paper elevation={3} className="question-box">
+                        
+                        </Paper>
+                        
                     <FormLabel>
                         Question No : {index + 1} / 10
                     </FormLabel>
@@ -97,27 +128,23 @@ const Quiz = () => {
                     <Grid container spacing={2}>
                         {indexQuestion.ans.map(x => {
                             return (
-                                <Grid item md={6} xs={12}>
-                                    <Button onClick={() => {
-                                        questions[index].selectedAns = x;
-
-                                        const _index = index + 1;
-
-                                        questions[index].selectedAns = x;
-
-                                        saveQuestions(questions)
-                                        if (index < 9) {
-                                            saveIndex(_index);
-                                        }
+                                <Grid item md={6} xs={12} key={x}>
+                                    <Button onClick={() => handleAnswerSelect(x)} 
+                       
 
 
-                                    }} variant="outlined" fullWidth> <span dangerouslySetInnerHTML={{ __html: x }} ></span>  </Button>
+                                 variant="outlined" fullWidth> <span dangerouslySetInnerHTML={{ __html: x }} ></span>  </Button>
                                 </Grid>
                             )
                         })}
+                      
 
                     </Grid>
+                    
+                    
+                    
                 </Grid>
+                
 
                 <Grid item>
                     <Grid container spacing={2}
@@ -154,9 +181,7 @@ const Quiz = () => {
                                     </Button>
 
                                 }
-                                
-            
-                                 
+                               
 
                                  
 
@@ -167,10 +192,23 @@ const Quiz = () => {
                 </Grid>
 
             </Grid>
+            <div className="stepper-container">
+                <Stepper activeStep={activeStep} alternativeLabel>
+                    {steps.map((label, index) => (
+                        <Step key={label}>
+                            <StepLabel>{label}</StepLabel>
+                        </Step>
+                    ))}
+                </Stepper>
+               
+            </div>
+            
+            
 
 
         </>
-
+        </div>
+</>
     )
 
 }
