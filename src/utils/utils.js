@@ -43,9 +43,9 @@ export const categories = [
 
 
 export const leve = [
-  {level:"easy"},
-  {level: "medium"},
-  {level: "hard"}
+  { level: "easy", name: "Easy" },
+  { level: "medium", name: "Medium" },
+  { level: "hard", name: "Hard" }
 ]
 
 
