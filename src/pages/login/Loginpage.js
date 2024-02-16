@@ -3,8 +3,9 @@ import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AppContext } from "../../context/AppContext";
 import Quiz from '../quiz/Quiz';
-import { TextField, Button, Alert } from '@mui/material';
+import { TextField, Button, Alert, Typography } from '@mui/material';
 import { Snackbar } from '@mui/base';
+import './Loginpage.css';
 
 const Loginpage = () => {
 
@@ -30,12 +31,20 @@ const Loginpage = () => {
 
 
   const handleContinue = () => {
-
-    navigation('/select-category')
+    if (username == undefined || username == "") {
+      setState({ ...state, open: true });
+    } else {
+      navigation('/select-category')
+    }
   };
 
   return (
-    <div style={{ border: '1px solid#325199', backgroundColor: "#FFFFFF", textAlign: 'center', padding: '20px', borderRadius: '8px', position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}
+    
+    <div className="login-container">
+     <div className="content"> 
+
+    <div style={
+      { border: '1px solid#E5E8F0', backgroundColor: "#FFFFFF", textAlign: 'center', padding: '20px', borderRadius: '8px', position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}
       className='body-element'>
       <img
         src="https://i.imgur.com/4FNV3mP.png
@@ -45,6 +54,10 @@ const Loginpage = () => {
       />
 
       <div style={{ marginBottom: '20px' }}>
+      <div className="form-container">
+      <Typography variant="h6" gutterBottom>
+        Test Your Brain, here
+      </Typography>
         <Snackbar
           anchorOrigin={{ vertical: state.vertical, horizontal: state.horizontal }}
           open={state.open}
@@ -81,6 +94,11 @@ const Loginpage = () => {
 
 
     </div>
+    </div>
+  </div>
+  </div>
+ 
+    
   );
 };
 export default Loginpage;

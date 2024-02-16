@@ -5,12 +5,13 @@
 
 body {
   height: 100vh;
-  background-image: linear-gradient(#d8c7ff, #006c292b);
+      
+  /* background-image: linear-gradient(#d8c7ff, #006c292b); */
   font-family: 'poppins';
 }
 
 .root-element {
-  text-align: center;
+   
   padding: 20px;
   border-radius: 8px;
   position: absolute;

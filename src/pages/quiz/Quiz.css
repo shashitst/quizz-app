@@ -1,3 +1,12 @@
+/* body{
+    background-image: url("https://imgur.com/m3ODUDn.jpeg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+} */
 .container{
     width: 640px;
     margin: auto;
@@ -50,10 +59,10 @@
 
 .quiz-container {
     position: relative;
-    width: 100%;
-    height: 100%;
+    background-image: url("https://imgur.com/m3ODUDn.jpeg");
+    background-size: cover;
+    background-position: center;
 }
-
 .header h3{
     position: absolute;
     top: 20px;
@@ -68,3 +77,11 @@
     top: 20px;
     left: 20px;
 }
+
+
+.content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 30px;
+  }

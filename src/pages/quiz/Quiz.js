@@ -1,5 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
+
 import { AppContext } from "../../context/AppContext";
+import { useHistory } from "react-router-dom";
 import "./Quiz.css";
 import {
     FormLabel,
@@ -10,13 +12,18 @@ import {
     Stepper,
     Step,
     StepLabel,
+    
+    
+    
 } from "@mui/material";
+import CloseIcon from '@mui/icons-material/Check';
+import CheckIcon from '@mui/icons-material/Close';
 import { useLocation, useNavigate } from "react-router-dom";
 import { getQuestions } from "../../api/API";
 import { categories, leve, level } from "../../utils/utils";
 
 const Quiz = () => {
-    const context = useContext(AppContext);
+     const context = useContext(AppContext);
     const {
         index,
         setIndex,
@@ -33,14 +40,21 @@ const Quiz = () => {
         results,
     } = context;
 
+
+  
     const [selectedAnswer, setSelectedAnswer] = useState();
     const [activeStep, setActiveStep] = useState(0);
+   
+   
     const steps = Array.from({ length: 10 }, (_, i) => `Question ${i + 1}`);
     const indexQuestion = questions[index];
 
+    const [render, setRender] = useState();
+
     const navigation = useNavigate();
-    useEffect(() => {
-        if (!indexQuestion) {
+    
+     useEffect (()=>{
+       if (!indexQuestion) {
             navigation("/");
         }
     }, []);
@@ -58,15 +72,24 @@ const Quiz = () => {
 
     const handleAnswerSelect = (selectedAns) => {
         questions[index].selectedAns = selectedAns;
+        questions[index].isCorrect = selectedAns === questions[index].correct_answer;
         const nextIndex = index + 1;
         saveQuestions(questions);
+        setRender(Date.now())
         if (nextIndex < 10) {
+            setTimeout(() => {
             saveIndex(nextIndex);
             setActiveStep(nextIndex);
-        } else {
-            handleSubmit();
+        }, 2 * 1000);
+       
         }
     };
+
+  
+    
+
+
+
 
     const handleSubmit = () => {
         let correctAnswers = 0;
@@ -87,23 +110,37 @@ const Quiz = () => {
         );
     };
 
+   
     let selectedAns = indexQuestion.selectedAns;
 
     let isSelectedCorrect = indexQuestion.correct_answer == selectedAns;
 
 
+    const handlePlayAgain = () => {
+        setIndex(0);
+        setQuestions(0);
+        setActiveStep(0);
+        navigation("/category");
+    };
+
+   
+   
+
+
     return (
         <>
             <div className="quiz-container">
+            <div className="content">
+           
                 <Grid container rowSpacing={3} spacing={2}>
                     <Grid item alignContent="center" xs={12}>
                         <h2>Hello {username}, </h2>
                     </Grid>
 
-                    <Grid item xs={6}>
+                    <Grid item xs={12}>
                         <h3>Category : {categoryname.name}</h3>
                     </Grid>
-                    <Grid item xs={6}>
+                    <Grid item xs={12}>
                         <h4>Difficulty Level : {levels.name}</h4>
                     </Grid>
 
@@ -111,23 +148,30 @@ const Quiz = () => {
                         <Stepper activeStep={activeStep} alternativeLabel>
                             {steps.map((label, index) => (
                                 <Step key={label}>
-                                    <StepLabel></StepLabel>
+                                    <StepLabel >
+
+                                    </StepLabel>
                                 </Step>
                             ))}
                         </Stepper>
                     </Grid>
+                    
 
                     <Grid
                         item
                         xs={12}
                         rowGap={5}
                         sx={{
-                            marginTop: "20px",
+                            marginTop:"30px",
+                            padding: "20px",
+                            backgroundColor: "#FFD1D3",
+                            borderRadius : "5px"
                         }}
                     >
                         <h4
                             dangerouslySetInnerHTML={{ __html: indexQuestion.question }}
                         ></h4>
+                        
                     </Grid>
                     <Grid item xs={12}>
                         <Grid container spacing={2}>
@@ -139,8 +183,8 @@ const Quiz = () => {
                                             variant="outlined"
                                             fullWidth
                                             sx={{
-                                                backgroundColor: x === indexQuestion.selectedAns ? "lightgreen"
-                                                    :  ""
+                                                backgroundColor: indexQuestion.isCorrect ? (x == indexQuestion.selectedAns) ? "lightgreen" : ""  : x == indexQuestion.selectedAns ? "#FFD1D3" : ""
+
                                             }}
                                         >
                                             <span dangerouslySetInnerHTML={{ __html: x }}></span>{" "}
@@ -160,13 +204,17 @@ const Quiz = () => {
                                     onClick={() => {
                                         const i = index - 1;
                                         saveIndex(i);
+                                        setActiveStep(i);
                                     }}
                                 >
                                     Previous
                                 </Button>
                             </Grid>
                             <Grid item xs={6}>
-                                <Button
+                                <Button disabled={!indexQuestion.selectedAns} 
+                              
+
+                                
                                     onClick={() => {
                                         let correctans = 0;
                                         let incorrectans = 0;
@@ -178,25 +226,37 @@ const Quiz = () => {
                                                     incorrectans++;
                                                 }
                                             });
+                                            handleSubmit();
                                         } else {
                                             const i = index + 1;
                                             saveIndex(i);
                                         }
                                     }}
+                                   
+                                  
                                 >
-                                    {
-                                        <Button onClick={handleSubmit}>
-                                            {index == 9 ? "Submit" : "Next"}
-                                        </Button>
-                                    }
+                                   
+                                 {index === 9 ? "Submit" : "Next"}
                                 </Button>
+
+                               
+                                </Grid>
+                              
                             </Grid>
                         </Grid>
-                    </Grid>
-                </Grid>
-            </div>
+                    
+                   </Grid>
+                  
+                
+                
+                </div>
+                </div>
+           
         </>
+        
     );
 };
+
+
 
 export default Quiz;

@@ -1,5 +1,7 @@
 import React, { useState, useContext, createContext, useEffect } from 'react';
 
+
+
 export const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
@@ -7,11 +9,13 @@ export const AppProvider = ({ children }) => {
   const [questions, setQuestions] = useState([]);
   const [answers, setAnswers] = useState([]);
   const [username, setUserName] = useState([]);
+  
+
 
 
   const [category, selectedCategory] = useState();
   const [difficultyLevel, setDifficultyLevel] = useState();
-
+  const [ActiveStep, setActiveStep] = useState();
 
   const [results, setResults] = useState([]);
 
@@ -28,9 +32,10 @@ export const AppProvider = ({ children }) => {
   }, [index, questions, answers, username,results])
 
 
+  
 
   return (
-    <AppContext.Provider  value={{ username, setUserName, saveQuestions, saveAnswers, saveIndex, index, questions, category, selectedCategory, difficultyLevel, setDifficultyLevel, results, setResults}}>
+    <AppContext.Provider  value={{ username, setUserName, saveQuestions, saveAnswers, saveIndex, index, questions, category, selectedCategory, difficultyLevel, setDifficultyLevel, results, setResults, setActiveStep}}>
       {children}
     </AppContext.Provider>
   );

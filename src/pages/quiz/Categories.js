@@ -30,7 +30,7 @@ export const Categories = () => {
             saveQuestions(questions);
             navigation('/quiz')
         }).catch(err => {
-
+             console.error(err);
         })
     }
 
@@ -82,13 +82,34 @@ export const Categories = () => {
                     <Button sx={{ height: '50px' }} fullWidth variant="outlined" onClick={() => {
                         setLoading(true);
                         makeApiCall();
-                    }}>
-                        <Stack sx={{ width: '100%' }} spacing={2}>
+                       
+                    }} 
+                    onKeyDown={(event) => {
+                        if (event.keyCode == 13) {
+                            setLoading(true);
+                            makeApiCall();
+                        }
+                    }}
+                    
+                >
+                        <Stack sx={{ width: '100%' }} spacing={2}
+                        onKeyDown={(event) => {
+                            if (event.keyCode == 13) {
+                                setLoading(true);
+                                makeApiCall();
+                            }
+                        }}
+                        
+                        
+                        >
                             {loading ?
                                 <LinearProgress color="secondary" />
                                 :
-                                "CONTINUE"
+                                "START QUIZ"
                             }
+                            
+                           
+                           
                         </Stack>
 
                     </Button>
