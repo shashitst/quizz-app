@@ -10,7 +10,7 @@ export const AppProvider = ({ children }) => {
   const [answers, setAnswers] = useState([]);
   const [username, setUserName] = useState([]);
   
-
+ 
 
 
   const [category, selectedCategory] = useState();
@@ -25,7 +25,7 @@ export const AppProvider = ({ children }) => {
   const saveIndex = (ind) => setIndex(ind);
 
 
-
+ 
 
   useEffect(() => {
     console.log("appcontext update");

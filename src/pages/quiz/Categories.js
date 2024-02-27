@@ -1,4 +1,4 @@
-import { Button, FormControl, Grid, InputLabel, LinearProgress, Menu, MenuItem, Select, Stack } from '@mui/material';
+import { Button, FormControl, Grid, InputLabel, LinearProgress, Menu, MenuItem, Select, Stack, Typography } from '@mui/material';
 import React, { useState, useContext } from 'react';
 import { getQuestions } from '../../api/API';
 import { AppContext } from '../../context/AppContext';
@@ -37,8 +37,13 @@ export const Categories = () => {
 
     return (
         <div className='body-element'>
-            <Grid alignItems="center" container spacing={2}>
-                <Grid item xs={12}>
+            
+            <Grid alignItems="center" container spacing={4}>
+                <Grid item xs = {12}>
+                    <Typography gutterBottom align="center">
+                        Select Your Categories
+                    </Typography>
+                <Grid item xs={12} >
                     <FormControl fullWidth>
                         <InputLabel id="demo-simple-select-label">Category</InputLabel>
                         <Select
@@ -79,7 +84,7 @@ export const Categories = () => {
                     </FormControl>
                 </Grid>
                 <Grid item xs={12}>
-                    <Button sx={{ height: '50px' }} fullWidth variant="outlined" onClick={() => {
+                    <Button sx={{ height: '50px', color: 'black' }} fullWidth variant="outlined" onClick={() => {
                         setLoading(true);
                         makeApiCall();
                        
@@ -114,6 +119,7 @@ export const Categories = () => {
 
                     </Button>
                 </Grid>
+            </Grid>
             </Grid>
         </div >
 

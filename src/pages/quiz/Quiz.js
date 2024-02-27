@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
-
+import { Avatar } from "@mui/material";
 import { AppContext } from "../../context/AppContext";
 import { useHistory } from "react-router-dom";
 import "./Quiz.css";
@@ -22,6 +22,8 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { getQuestions } from "../../api/API";
 import { categories, leve, level } from "../../utils/utils";
 
+
+
 const Quiz = () => {
      const context = useContext(AppContext);
     const {
@@ -38,7 +40,9 @@ const Quiz = () => {
         category,
         difficultyLevel,
         results,
+        
     } = context;
+
 
 
   
@@ -131,9 +135,11 @@ const Quiz = () => {
         <>
             <div className="quiz-container">
             <div className="content">
-           
+          
                 <Grid container rowSpacing={3} spacing={2}>
                     <Grid item alignContent="center" xs={12}>
+                    <Avatar sx={{ width: 100, height: 100, marginBottom: 2, bgcolor: '#007bff' }}>{username && username.trim() ? username.trim()[0].toUpperCase() : ''}</Avatar>
+            
                         <h2>Hello {username}, </h2>
                     </Grid>
 
@@ -235,8 +241,11 @@ const Quiz = () => {
                                    
                                   
                                 >
-                                   
+                                    
+                                        
+                                  
                                  {index === 9 ? "Submit" : "Next"}
+                                    
                                 </Button>
 
                                

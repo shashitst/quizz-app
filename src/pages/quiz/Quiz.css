@@ -60,6 +60,7 @@
 .quiz-container {
     position: relative;
     background-image: url("https://imgur.com/m3ODUDn.jpeg");
+  
     background-size: cover;
     background-position: center;
 }
